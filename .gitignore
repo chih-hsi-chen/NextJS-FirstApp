@@ -31,3 +31,6 @@ yarn-error.log*
 
 # ESLint output
 eslint.output
+
+# Thumb file
+Thumbs.db
