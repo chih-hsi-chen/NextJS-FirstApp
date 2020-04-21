@@ -9,6 +9,12 @@
 		"SESSION_STORE_URL": "@session-store-uri",
 		"SESSION_STORE_DB_NAME": "@session-db-name"
 	  }
-	}
+	},
+	"routes": [
+		{
+			"src": "/.*",
+			"dest": "server/index.js"
+		}
+	]
   }
   
