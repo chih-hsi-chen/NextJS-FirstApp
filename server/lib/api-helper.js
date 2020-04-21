@@ -1,4 +1,4 @@
-import {Request, Response, NextFunction} from 'express';
+
 
 /**
  * 
@@ -6,7 +6,7 @@ import {Request, Response, NextFunction} from 'express';
  * @param {Response} res 
  * @param {NextFunction} next 
  */
-export const ensureAuthenticated = function(req, res, next) {
+const ensureAuthenticated = function(req, res, next) {
     if (req.isAuthenticated()) {
 		return next();
 	}
@@ -17,7 +17,7 @@ export const ensureAuthenticated = function(req, res, next) {
  * 
  * @param {Request} req 
  */
-export const extractUser = function(req) {
+const extractUser = function(req) {
     if (!req.user) return null;
     const {
         username
@@ -27,3 +27,8 @@ export const extractUser = function(req) {
         username
     };
 }
+
+module.exports = {
+    ensureAuthenticated,
+    extractUser
+};

@@ -1,6 +1,6 @@
-import express from 'express';
-import passport from '../middleware/passport';
-import { extractUser } from '../lib/api-helper';
+const express = require('express');
+const passport = require('../middleware/passport');
+const { extractUser } = require('../lib/api-helper');
 
 const router = express.Router();
 
@@ -9,7 +9,7 @@ router.delete('/auth', function (req, res, next) {
 	req.session.username = '';
 	req.session.times = 1;
 
-	res.send({ message: 'user log out' });
+	return res.sendStatus(302);
 });
 
 router.post('/auth',

@@ -1,8 +1,8 @@
-import { MongoClient } from 'mongodb';
+const MongoClient = require('mongodb').MongoClient;
 
 let cachedClient = null;
 
-async function database(req, res, next) {
+const database = async function (req, res, next) {
     if(!cachedClient) {
         cachedClient = await MongoClient.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
@@ -15,4 +15,4 @@ async function database(req, res, next) {
     return next();
 }
 
-export default database;
+module.exports = database;

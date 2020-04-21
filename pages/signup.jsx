@@ -19,7 +19,7 @@ const SignupPage = () => {
 			username: e.currentTarget.username.value,
 			password: e.currentTarget.password.value,
 		};
-		const res = await fetch('/api/user', {
+		const res = await fetch('/api/users', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify(body),

@@ -1,6 +1,6 @@
 const express = require('express');
 const next = require('next');
-const applyMiddlewares = require('./middleware/middlewares').default;
+const applyMiddlewares = require('./middleware/middlewares');
 const apiRouter = require('./routes/auth');
 const ensureAuthenticated = require('./lib/api-helper').ensureAuthenticated;
 const bodyParser = require('body-parser');
@@ -21,7 +21,7 @@ app.prepare().then(() => {
 		return app.render(req, res, '/about', req.query);
 	});
 
-	server.get('/protected', (req, res) => {
+	server.get('/protected', ensureAuthenticated, (req, res) => {
 		return app.render(req, res, '/protected', req.query);
 	});
 
@@ -36,3 +36,5 @@ app.prepare().then(() => {
 		console.log(`> Ready on http://localhost:${port}`);
 	});
 });
+
+module.exports = app;

@@ -1,13 +1,8 @@
-import cors from './cors';
-import session from './session';
-import database from './database';
-import {Express} from 'express';
-import passport from './passport';
+const cors = require('./cors');
+const session = require('./session');
+const database = require('./database');
+const passport = require('./passport');
 
-/**
- * 
- * @param {Express} app 
- */
 function applyMiddlewares(app) {
     return app.use(cors)
               .use(database)
@@ -16,4 +11,4 @@ function applyMiddlewares(app) {
               .use(passport.session());
 }
 
-export default applyMiddlewares;
+module.exports = applyMiddlewares;

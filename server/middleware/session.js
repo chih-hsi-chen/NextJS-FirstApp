@@ -1,9 +1,9 @@
-import session from 'express-session';
-import connectMongo from 'connect-mongo';
+const session = require('express-session');
+const connectMongo = require('connect-mongo');
 
 const MongoStore = connectMongo(session);
 
-export default function (req, res, next) {
+const mySession = function (req, res, next) {
     const mongoStore = new MongoStore({
         client: req.client,
         dbName: process.env.SESSION_STORE_DB_NAME,
@@ -17,4 +17,6 @@ export default function (req, res, next) {
             maxAge: 24 * 60 * 60 * 1000, // 1 day
         },
     })(req, res, next);
-}
+};
+
+module.exports = mySession;

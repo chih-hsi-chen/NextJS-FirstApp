@@ -1,4 +1,4 @@
-export default function cors(req, res, next) {
+const cors = function (req, res, next) {
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*');
 
@@ -15,3 +15,5 @@ export default function cors(req, res, next) {
     // Pass to next layer of middleware
     return next();
 }
+
+module.exports = cors;
