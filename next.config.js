@@ -14,7 +14,11 @@ module.exports = (phase, { defaultConfig }) => {
     }
     return {
         env: {
-            NODE_ENV: process.env
+            MONGODB_URI: process.env.MONGODB_URI,
+            DB_NAME: process.env.DB_NAME,
+            SECRET: process.env.SECRET,
+            SESSION_STORE_URL: process.env.SESSION_STORE_URL,
+            SESSION_STORE_DB_NAME: process.env.SESSION_STORE_DB_NAME
         },
     }
 };
